@@ -45,12 +45,12 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function role()
+    public function role()
     {
         return $this->belongsTo(Role::class, 'role_id', 'role_id');
     }
 
-    protected function group()
+    public function group()
     {
         return $this->belongsTo(Group::class, 'group_id', 'group_id');
     }
