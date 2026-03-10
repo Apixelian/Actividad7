@@ -17,10 +17,18 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    // PK personalizada
+    protected $primaryKey = 'user_id';
+    public $incrementing = true; // Si el ID es auto-incrementable
+    protected $keyType = 'int'; // Tipo de dato del ID
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role_id',
+        'group_id',
     ];
 
     /**
@@ -30,7 +38,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -38,11 +45,13 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    protected function role()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->belongsTo(Role::class, 'role_id', 'role_id');
+    }
+
+    protected function group()
+    {
+        return $this->belongsTo(Group::class, 'group_id', 'group_id');
     }
 }
