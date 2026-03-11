@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('course_key', 50);
             $table->string('title', 100);
             $table->string('cover', 255);
-            $table->string('content', 255);
+            $table->text('content');
 
             // Relaciones con otras tablas
             $table->integer('group_id')->unsigned();

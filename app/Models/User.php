@@ -23,6 +23,8 @@ class User extends Authenticatable
     public $incrementing = true; // Si el ID es auto-incrementable
     protected $keyType = 'int'; // Tipo de dato del ID
 
+    public $timestamps = false;
+
     protected $fillable = [
         'name',
         'email',
